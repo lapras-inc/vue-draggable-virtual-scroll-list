@@ -70,8 +70,5 @@ export class Logger {
 
 export default new Logger({
   out: window.console,
-  level:
-    process && process.env && process.env.NODE_ENV === 'development'
-      ? Level.DEBUG
-      : Level.ERROR,
+  level: process.env.NODE_ENV === 'production' ? Level.ERROR : Level.DEBUG,
 })
