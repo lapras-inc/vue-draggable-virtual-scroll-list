@@ -7520,18 +7520,10 @@ class VirtualScrollListPolicy {
         this._draggingIndex = e.oldIndex;
         const relativeIndex = range.start + e.oldIndex;
         this._draggingRealIndex = relativeIndex;
-        this._dataKey && this._indexMap
-            ? this._calcRealIndex(relativeIndex)
-            : relativeIndex;
         this._draggingVNode = slots[e.oldIndex];
     }
     onDragEnd() {
         this._draggingVNode = null;
-    }
-    _calcRealIndex(relativeIndex) {
-        if (this._dataSources.length <= relativeIndex)
-            return relativeIndex;
-        return this._indexMap[this._dataSources[relativeIndex][this._dataKey]];
     }
 }
 
@@ -8416,9 +8408,9 @@ class DraggablePolicy {
             const { newIndex } = instruction.moved;
             const start = this.visibleRange.start + newIndex;
             const deleteCount = 0;
-            const indexForRemove = draggingRealIndex;
+            const indexForRemove = this._calcRealIndex(draggingRealIndex);
             const indexForInsert = this._calcRealIndex(start);
-            const item = newList.splice(this._calcRealIndex(indexForRemove), 1)[0];
+            const item = newList.splice(indexForRemove, 1)[0];
             logger.debug(`Move by splicing start: ${start},` +
                 ` deleteCount: ${deleteCount}, item:`, item);
             logger.debug(`real index removed: ${indexForRemove},` +
