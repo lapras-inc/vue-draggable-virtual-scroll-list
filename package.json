@@ -1,6 +1,6 @@
 {
   "name": "vue-draggable-virtual-scroll-list",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "SortableJS/Vue.Draggable + tangbc/vue-virtual-scroll-list",
   "main": "dist/vue-draggable-virtual-scroll-list.ssr.js",
   "browser": "dist/vue-draggable-virtual-scroll-list.esm.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "vue": "^2.6.11",
     "vue-property-decorator": "^8.4.1",
-    "vue-virtual-scroll-list": "^2.0.3",
+    "vue-virtual-scroll-list": "^2.3.1",
     "vuedraggable": "^2.23.2"
   },
   "devDependencies": {
